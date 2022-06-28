@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.css">
+  <title>聊天室</title>
+</head>
+
+<body>
+  <div>
+    
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    window.onload = function () {
+      const socket = io.connect('/'); // io 变量 /是默认命名空间
+      //监听与服务器端的连接成功事件
+      socket.on('connect', function () {
+        console.log('连接成功');
+        socket.send('hello')
+      });
+      socket.on('message', function (data) {
+        console.log('接收到服务器的消息：', data);
+      })
+      //监听与服务器端断开连接事件
+      socket.on('disconnect', function () {
+        console.log('断开连接');
+      });
+    };
+  </script>
+</body>
+
+</html>

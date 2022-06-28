@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="clock"></div>
+  <script>
+    
+    // let ws = new WebSocket('ws://localhost:8888');  // app.js
+    let ws = new WebSocket('ws://localhost:9999'); // app2.js
+    ws.onopen = function () {
+      console.log('客户端连接成功');
+      ws.send('hello');
+    }
+    ws.onmessage = function (event) {
+      console.log('收到服务器的响应 ' + event.data);
+    }
+  </script>
+</body>
+
+</html>
